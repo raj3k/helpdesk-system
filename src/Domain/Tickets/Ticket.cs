@@ -6,19 +6,28 @@ namespace Domain.Tickets;
 
 public class Ticket : BaseAuditableEntity<TicketId>
 {
-    // TODO: Work on Ticket class. create enums, validation, VO etc.
-    public string Title { get; set; }
-    public string Description { get; set; }
-    public TicketStatus Status { get; private set; } = TicketStatus.Open; 
-    public PriorityStatus Priority { get; }
-    public DateTime CreationTime { get; } = DateTime.Now;
-    public string AssignedStaff { get; set; }
-    public string Category { get; set; }
+    private string Title { get; }
+    private string Description { get; }
+    private TicketStatus Status { get; set; } = TicketStatus.Open; 
+    private PriorityStatus Priority { get; }
+    private DateTime CreationTime { get; } = DateTime.Now;
+    private string AssignedStaff { get; set; } = "TEST"; // placeholder
+    private Category Category { get; }
 
-    public Ticket(string title, string description, PriorityStatus priorityStatus)
+    public Ticket(string title, string description, PriorityStatus priorityStatus, string category)
     {
         Title = Guard.Against.NullOrEmpty(title);
         Description = Guard.Against.NullOrEmpty(description);
         Priority = priorityStatus;
+        Category = new Category(category);
+    }
+
+    private Ticket()
+    {
+    }
+
+    public void UpdateTicketStatus(TicketStatus newStatus)
+    {
+        Status = Guard.Against.Null(newStatus);
     }
 }

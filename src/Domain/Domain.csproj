@@ -11,6 +11,11 @@
       <PackageReference Include="Ardalis.SmartEnum" Version="7.0.0" />
       <PackageReference Include="MediatR" Version="12.1.1" />
 
+
+    <ItemGroup>
+      <Folder Include="Users\" />
+    </ItemGroup>
+
     </ItemGroup>
 
 
