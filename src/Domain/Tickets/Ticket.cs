@@ -10,7 +10,6 @@ public class Ticket : BaseAuditableEntity<TicketId>
     private string Description { get; }
     private TicketStatus Status { get; set; } = TicketStatus.Open; 
     private PriorityStatus Priority { get; }
-    private DateTime CreationTime { get; } = DateTime.Now;
     private string AssignedStaff { get; set; } = "TEST"; // placeholder
     private Category Category { get; }
 
